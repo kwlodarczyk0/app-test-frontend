@@ -1,0 +1,16 @@
+.list-style {
+    width: 200px;
+    margin-right: 20px;
+    //display: flex;
+    border: 1px solid black;
+    margin: 20px 20px 0 0;
+    padding: 10px;
+    border-radius: 2px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.list-item {
+    display: flex;
+    justify-content: space-between;
+}

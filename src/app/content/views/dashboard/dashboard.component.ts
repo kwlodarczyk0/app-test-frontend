@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/api/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,9 +8,12 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild('test') ctx!: ElementRef;
+  constructor(private storage: LocalStorageService, private router: Router) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.storage.getAccesToken()) {
+      this.router.navigate(['/']);
+    }
+    //jeśli token jest nieważy to wyrzuć na stronę logowania
+  }
 }

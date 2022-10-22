@@ -1,2 +1,29 @@
-<p>login works!</p>
-<button class="xd" routerLink="/dashboard">CLICK TO SEE DASHBOARD</button>
+<div class="login-background">
+  <mat-card class="mat-card">
+    <mat-card-content>
+      <h2>Task Tracker</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input formControlName="username" matInput />
+            <mat-error>Username is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              formControlName="password"
+              matInput
+              autocomplete="on"
+              type="password"
+            />
+            <mat-error>Password is required</mat-error>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

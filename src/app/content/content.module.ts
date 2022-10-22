@@ -9,18 +9,43 @@ import { NavbarHeaderModule } from './components/navbar-header/navbar-header.mod
 import { FooterModule } from './components/footer/footer.module';
 import { TaskComponent } from './views/task/task.component';
 import { RouterModule } from '@angular/router';
+import { ProjectsService } from '../api/projects/projects.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TasksService } from '../api/tasks/tasks.service';
+import { HttpInterceptorService } from '../common/http-interceptor.service';
+import { AuthService } from '../api/authorization/auth.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-const CONTENT_COMPONENTS = [DashboardComponent, SeeUsersComponent];
+const CONTENT_COMPONENTS = [
+  DashboardComponent,
+  TaskComponent,
+  SeeUsersComponent,
+];
 const CONTENT_IMPORTS = [
+  HttpClientModule,
   CommonModule,
   ContentRoutingModule,
   MatSliderModule,
   NavbarHeaderModule,
   FooterModule,
+  RouterModule,
+  MatIconModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({
-  declarations: [...CONTENT_COMPONENTS, TaskComponent],
-  imports: [...CONTENT_IMPORTS, RouterModule],
+  declarations: [...CONTENT_COMPONENTS],
+  imports: [...CONTENT_IMPORTS],
+  providers: [
+    ProjectsService,
+    TasksService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+  ],
 })
 export class ContentModule {}

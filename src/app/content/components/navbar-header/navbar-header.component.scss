@@ -1,0 +1,32 @@
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: steelblue;
+    color: white;
+    height: 50px;
+    &__container {
+        display: flex;
+        width: 1400px;
+        justify-content: space-between;
+        padding: 0px 10px;
+    }
+
+    &__logo {
+        font-size: 25px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__menu {
+        color: whitesmoke;
+        .mat-icon {
+            font-size: 25px;
+            margin-right: 10px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

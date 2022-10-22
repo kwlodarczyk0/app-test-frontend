@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 html,
 body {
     height: 100%;
@@ -9,7 +9,8 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-:root {
-    --main-color: red;
-    $nd-color: blue;
-}
+// .mat-icon {
+//     &:hover {
+//         cursor: pointer;
+//     }
+// }

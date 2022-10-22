@@ -1,8 +1,9 @@
-<nav>
-  <h1>TASK-TRACKER</h1>
-  <button routerLink="..">LOGOUT</button>
-  <button routerLink="/dashboard/see">SEE ALL USERS</button>
-  <button routerLink="/dashboard/user-details">Test</button>
-  <button routerLink="/dashboard/task/1">Task1</button>
-  <button routerLink="/dashboard/task/2">Task2</button>
+<nav class="nav">
+  <div class="nav__container">
+    <div class="nav__logo" routerLink="/">TASK-TRACKER</div>
+    <div class="nav__menu">
+      <mat-icon routerLink="/dashboard/user-details">account_circle</mat-icon>
+      <mat-icon (click)="logout()">logout</mat-icon>
+    </div>
+  </div>
 </nav>

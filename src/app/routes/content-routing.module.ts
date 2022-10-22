@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from '../content/views/dashboard/dashboard.component';
-import { SeeUsersComponent } from '../content/views/see-users/see-users.component';
-import { TaskComponent } from '../content/views/task/task.component';
-import { TaskResolver } from '../content/views/task/task.resolver';
 
 const routes: Routes = [
   {
@@ -12,19 +9,15 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/dashboard/see',
+        redirectTo: '/dashboard/projects',
         pathMatch: 'full',
       },
       {
-        path: 'see',
-        component: SeeUsersComponent,
-      },
-      {
-        path: 'task/:id',
-        component: TaskComponent,
-        /*resolve: {
-          task: TaskResolver,
-        },*/
+        path: 'projects',
+        loadChildren: () =>
+          import('../content/views/projects-view/projects-view.module').then(
+            (m) => m.ProjectsViewModule
+          ),
       },
       {
         path: 'user-details',

@@ -1,0 +1,62 @@
+<div class="action__bar">
+  <mat-icon routerLink="/dashboard">fast_rewind</mat-icon>
+  <div>
+    <button mat-button>Add task</button>
+    <button mat-button (click)="openDialog()">Add user to project</button>
+  </div>
+</div>
+<div>
+  <h1>
+    {{ name }}
+  </h1>
+</div>
+<!--DRAG AND DROP DASHBOARD SIDE // new component will be useful-->
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>To do</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="toDoTasks"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of toDoTasks" cdkDrag>
+        {{ item.code }}
+        {{ item.id }}
+        <button [routerLink]="[item.code]">KLIK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>In development</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="activeTasks"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of activeTasks" cdkDrag>
+        {{ item.code }}
+        {{ item.id }}
+        <button [routerLink]="[item.code]">KLIK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Done</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="doneTasks"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="example-box" *ngFor="let item of doneTasks" cdkDrag>
+        {{ item.code }}
+        {{ item.id }}
+        <button [routerLink]="[item.code]">KLIK</button>
+      </div>
+    </div>
+  </div>
+</div>

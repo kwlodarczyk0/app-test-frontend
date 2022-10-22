@@ -1,0 +1,9 @@
+<h1>Projects</h1>
+<div class="project-view">
+  <app-projects-list
+    [projects]="projects"
+    (changeProjectEvent)="changeProject($event)"
+  ></app-projects-list>
+
+  <app-project-info [activeProject]="activeProject"></app-project-info>
+</div>
