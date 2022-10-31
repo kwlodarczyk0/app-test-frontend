@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: steelblue;
+    background-color: var(--color-primary);
     color: white;
     height: 50px;
     &__container {

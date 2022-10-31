@@ -29,18 +29,28 @@ export class AddTaskDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((users: any) => {
+    /*this.userService.getUsers().subscribe((users: any) => {
       //odfiltrować ludzi aktualnie będących w projekcie
+      const projectName = this.dialogData.projectName;
+      //console.log(users);
+
       users.forEach((user: any) => {
-        console.log(user.username);
+        //console.log(user.username);
         this.options.push({ name: user.username });
       });
-    });
+    });*/
+
+    this.projectService
+      .getUsersNotInProject(this.dialogData.projectName)
+      .subscribe((usernames: string[]) => {
+        usernames.forEach((username: string) => {
+          this.options.push({ name: username });
+        });
+      });
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => {
-        console.log(value);
         const name = typeof value === 'string' ? value : value?.name;
         return name ? this._filter(name as string) : this.options.slice();
       })

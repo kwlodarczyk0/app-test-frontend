@@ -1,0 +1,19 @@
+<mat-icon routerLink="..">fast_rewind</mat-icon>
+<div *ngIf="task">
+  {{ task.code }}
+  {{ task.description }}
+  {{ task.creationDate | date }}
+  {{ task.priority }}
+  {{ task.user?.username }}
+</div>
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Assignee</mat-label>
+  <input type="text" matInput [formControl]="user" [matAutocomplete]="auto" />
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{ option.name }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+
+<div>Assign user to this task <button (click)="addTask()">DODAJ</button></div>

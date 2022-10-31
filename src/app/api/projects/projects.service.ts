@@ -22,12 +22,28 @@ export class ProjectsService {
     return this.http.get(`${this.API_URL}/project/user-projects`);
   }
 
+  getUsersFromProjects(projectName: string): Observable<string[]> {
+    return this.http.get<string[]>(
+      `${this.API_URL}/project/project-users/${projectName}`
+    );
+  }
+
+  getUsersNotInProject(projectName: string): Observable<string[]> {
+    return this.http.get<string[]>(
+      `${this.API_URL}/project/users-not-in-project/${projectName}`
+    );
+  }
+
   addUserToProject(username: any, project: any) {
-    console.log(username);
-    console.log(project);
     return this.http.post(`${this.API_URL}/project/add/add-user-to-project`, {
       username: username,
       projectName: project,
+    });
+  }
+
+  addNewProject(projectName: any) {
+    return this.http.post(`${this.API_URL}/project/add/add-project`, {
+      name: projectName,
     });
   }
 }

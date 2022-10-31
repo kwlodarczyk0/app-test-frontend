@@ -7,7 +7,6 @@ import { ContentRoutingModule } from '../routes/content-routing.module';
 import { MatSliderModule } from '@angular/material/slider';
 import { NavbarHeaderModule } from './components/navbar-header/navbar-header.module';
 import { FooterModule } from './components/footer/footer.module';
-import { TaskComponent } from './views/task/task.component';
 import { RouterModule } from '@angular/router';
 import { ProjectsService } from '../api/projects/projects.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -17,11 +16,7 @@ import { AuthService } from '../api/authorization/auth.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-const CONTENT_COMPONENTS = [
-  DashboardComponent,
-  TaskComponent,
-  SeeUsersComponent,
-];
+const CONTENT_COMPONENTS = [DashboardComponent, SeeUsersComponent];
 const CONTENT_IMPORTS = [
   HttpClientModule,
   CommonModule,

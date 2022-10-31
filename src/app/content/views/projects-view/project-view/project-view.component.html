@@ -1,7 +1,7 @@
 <div class="action__bar">
   <mat-icon routerLink="/dashboard">fast_rewind</mat-icon>
   <div>
-    <button mat-button>Add task</button>
+    <button mat-button [routerLink]="'addTask'">Add task</button>
     <button mat-button (click)="openDialog()">Add user to project</button>
   </div>
 </div>
@@ -13,14 +13,15 @@
 <!--DRAG AND DROP DASHBOARD SIDE // new component will be useful-->
 <div cdkDropListGroup>
   <div class="example-container">
-    <h2>To do</h2>
+    <h2>Open</h2>
     <div
       cdkDropList
-      [cdkDropListData]="toDoTasks"
+      [cdkDropListData]="openTasks"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
+      #open
     >
-      <div class="example-box" *ngFor="let item of toDoTasks" cdkDrag>
+      <div class="example-box" *ngFor="let item of openTasks" cdkDrag>
         {{ item.code }}
         {{ item.id }}
         <button [routerLink]="[item.code]">KLIK</button>
@@ -29,14 +30,15 @@
   </div>
 
   <div class="example-container">
-    <h2>In development</h2>
+    <h2>In progress</h2>
     <div
       cdkDropList
-      [cdkDropListData]="activeTasks"
+      [cdkDropListData]="inProgressTasks"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
+      #progress
     >
-      <div class="example-box" *ngFor="let item of activeTasks" cdkDrag>
+      <div class="example-box" *ngFor="let item of inProgressTasks" cdkDrag>
         {{ item.code }}
         {{ item.id }}
         <button [routerLink]="[item.code]">KLIK</button>
@@ -51,6 +53,7 @@
       [cdkDropListData]="doneTasks"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
+      #done
     >
       <div class="example-box" *ngFor="let item of doneTasks" cdkDrag>
         {{ item.code }}

@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Add new project</h1>
+<div mat-dialog-content class="contnet">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>New Project</mat-label>
+    <input type="text" matInput [formControl]="myControl" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="addNewProject()">
+    Add
+  </button>
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+</div>
