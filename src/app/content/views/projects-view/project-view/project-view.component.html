@@ -2,7 +2,9 @@
   <mat-icon routerLink="/dashboard">fast_rewind</mat-icon>
   <div>
     <button mat-button [routerLink]="'addTask'">Add task</button>
-    <button mat-button (click)="openDialog()">Add user to project</button>
+    <button *productManager="name" mat-button (click)="openDialog()">
+      Add user to project
+    </button>
   </div>
 </div>
 <div>

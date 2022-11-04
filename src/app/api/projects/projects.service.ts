@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 @Injectable()
 export class ProjectsService {
@@ -45,5 +45,11 @@ export class ProjectsService {
     return this.http.post(`${this.API_URL}/project/add/add-project`, {
       name: projectName,
     });
+  }
+
+  getProductManager(projectName: any) {
+    return this.http
+      .get(`${this.API_URL}/project/product-manager/${projectName}`)
+      .pipe(map((data) => [data]));
   }
 }

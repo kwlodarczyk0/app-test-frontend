@@ -1,4 +1,13 @@
 <mat-card class="info">
-  <h2>Project info</h2>
-  <div>{{ activeProject?.name }}</div>
+  <div *ngIf="activeProject" class="info__details">
+    <h2>Project info</h2>
+    <div>Name: {{ activeProject.name }}</div>
+    <div>Users in project: {{ activeProject.users.length }}</div>
+    <div>Tasks in project: {{ activeProject.tasks.length }}</div>
+    <div *ngIf="activeProject.productManager">
+      Product moderator: {{ activeProject.productManager }}
+    </div>
+    <div *ngIf="activeProject.tasks.length">Task raport</div>
+  </div>
+  <canvas class="canvas" id="MyChart">{{ chart }}</canvas>
 </mat-card>

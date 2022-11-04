@@ -25,6 +25,7 @@ export class MainViewComponent implements OnInit {
   ngOnInit(): void {
     this.projectsService.getUserProjects().subscribe({
       next: (data) => {
+        //console.log(data);
         this.projects = data;
         this.activeProject = this.projects[0];
       },

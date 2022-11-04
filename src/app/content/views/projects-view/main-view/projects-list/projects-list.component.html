@@ -3,8 +3,16 @@
   (click)="changeActiveProject(project)"
   class="list-style"
 >
-  <div class="list-item">
-    <p>{{ project.name }}</p>
-    <button [routerLink]="['project', project.name]">Go to tasks list</button>
-  </div>
+  <mat-card>
+    <div class="list-item">
+      <h3>{{ project.name }}</h3>
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="['project', project.name]"
+      >
+        See details
+      </button>
+    </div>
+  </mat-card>
 </div>

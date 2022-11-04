@@ -12,6 +12,8 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AddTaskDialogComponent } from './add-user-dialog/add-user-dialog.component';
 import { TasksService } from 'src/app/api/tasks/tasks.service';
 import { CdkAriaLive } from '@angular/cdk/a11y';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { AnimateTimings } from '@angular/animations';
 
 @Component({
   selector: 'app-project-view',
@@ -19,6 +21,10 @@ import { CdkAriaLive } from '@angular/cdk/a11y';
   styleUrls: ['./project-view.component.scss'],
 })
 export class ProjectViewComponent implements OnInit {
+  @ViewChild('open') open: any;
+  @ViewChild('progress') progress: any;
+  @ViewChild('done') done: any;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -35,10 +41,6 @@ export class ProjectViewComponent implements OnInit {
   openTasks: any = [];
   inProgressTasks: any = [];
   doneTasks: any = [];
-
-  @ViewChild('open') open: any;
-  @ViewChild('progress') progress: any;
-  @ViewChild('done') done: any;
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

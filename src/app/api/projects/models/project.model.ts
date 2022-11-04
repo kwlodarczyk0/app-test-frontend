@@ -4,6 +4,7 @@ import { UserModel } from '../../user/models/user.model';
 export interface ProjectModel {
   id: number;
   name: string;
+  productManager: string;
   users: UserModel[];
   tasks: TaskModel[];
 }

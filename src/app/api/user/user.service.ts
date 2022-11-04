@@ -18,4 +18,8 @@ export class UserService {
   getCurrentUser(): Observable<UserModel> {
     return this.http.get<UserModel>(`${this.API_URL}/user/getUser`);
   }
+
+  getUserRoles() {
+    return this.http.get(`${this.API_URL}/user/roles`);
+  }
 }

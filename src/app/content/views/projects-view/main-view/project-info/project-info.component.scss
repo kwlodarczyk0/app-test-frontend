@@ -1,5 +1,22 @@
 .info {
-    @media screen and (max-width: 600px) {
+    margin-top: 25px;
+    width: 1000px;
+    @media screen and (max-width: 700px) {
         display: none;
     }
+    &__details {
+        width: 100%;
+        //color: red;
+        div {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+    }
+}
+.canvas {
+    color: black;
+    //min-width: 600px;
+    //max-width: 1000px;
+    //width: 100%;
+    //width: 650px;
 }

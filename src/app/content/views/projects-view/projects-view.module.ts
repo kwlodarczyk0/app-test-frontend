@@ -19,6 +19,8 @@ import { AddProjectDialogComponent } from './main-view/add-project-dialog/add-pr
 import { MatButtonModule } from '@angular/material/button';
 import { AddTaskComponent } from './project-view/add-task/add-task.component';
 import { TaskDetailsComponent } from './project-view/task-details/task-details.component';
+import { HasRoleDirective } from 'src/app/common/hasRole.directive';
+import { isProductManagerDirective } from 'src/app/common/isProductManager.directive';
 
 const PROJECT_COMPONETS = [
   MainViewComponent,
@@ -28,6 +30,8 @@ const PROJECT_COMPONETS = [
   AddTaskDialogComponent,
   AddProjectDialogComponent,
   AddTaskComponent,
+  HasRoleDirective,
+  isProductManagerDirective,
 ];
 
 const PROJECT_MODULES = [

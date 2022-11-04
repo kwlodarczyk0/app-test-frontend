@@ -1,6 +1,13 @@
 <div class="bar">
   <h1>Projects</h1>
-  <button mat-raised-button (click)="openDialog()">Add new Project</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="openDialog()"
+    *appHasRole="'ROLE_USER'"
+  >
+    Add new Project
+  </button>
 </div>
 <div class="project-view">
   <app-projects-list
@@ -8,5 +15,8 @@
     (changeProjectEvent)="changeProject($event)"
   ></app-projects-list>
 
-  <app-project-info [activeProject]="activeProject"></app-project-info>
+  <app-project-info
+    *ngIf="activeProject"
+    [activeProject]="activeProject"
+  ></app-project-info>
 </div>
