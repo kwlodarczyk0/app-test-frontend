@@ -52,4 +52,11 @@ export class ProjectsService {
       .get(`${this.API_URL}/project/product-manager/${projectName}`)
       .pipe(map((data) => [data]));
   }
+
+  setProductManager(projectName: any, managerName: any) {
+    return this.http.put<any>(
+      `${this.API_URL}/project/product-manager/${projectName}`,
+      managerName
+    );
+  }
 }

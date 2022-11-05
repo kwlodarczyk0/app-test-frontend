@@ -1,19 +1,66 @@
 <mat-icon routerLink="..">fast_rewind</mat-icon>
-<div *ngIf="task">
-  {{ task.code }}
-  {{ task.description }}
-  {{ task.creationDate | date }}
-  {{ task.priority }}
-  {{ task.user?.username }}
-</div>
-<mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Assignee</mat-label>
-  <input type="text" matInput [formControl]="user" [matAutocomplete]="auto" />
-  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-      {{ option.name }}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
+<div class="task">
+  <div *ngIf="task" class="task__details">
+    <mat-card>
+      <h2>{{ task.code }}</h2>
+      <h3>Task description:</h3>
+      <p>{{ task.description }}</p>
+      <p>Task added at:</p>
+      {{ task.creationDate | date }}
+      <p>Taks prority:</p>
+      {{ task.priority }}
+      <p>Assiggned user:</p>
+      <div *ngIf="!task.user?.username">Not user assigned</div>
+      <div>{{ task.user?.username }}</div>
 
-<div>Assign user to this task <button (click)="addTask()">DODAJ</button></div>
+      <h2>Comment section</h2>
+
+      <div *ngFor="let comment of task.comments" class="comment">
+        <div>{{ comment.id }}</div>
+        <div>{{ comment.text }}</div>
+        <div>{{ comment.user.username }}</div>
+        <div>{{ comment.date | date }}</div>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="deleteComment(comment.id)"
+        >
+          X
+        </button>
+      </div>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Add comment</mat-label>
+        <input type="text" matInput [formControl]="commentForm" />
+      </mat-form-field>
+      <button mat-raised-button color="accent" (click)="addComment()">
+        Add comment
+      </button>
+    </mat-card>
+  </div>
+  <div class="task__form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Assignee</mat-label>
+      <input
+        type="text"
+        matInput
+        [formControl]="user"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+        >
+          {{ option.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <div>
+      <button mat-raised-button color="primary" (click)="addTask()">
+        Assign user to this task
+      </button>
+    </div>
+  </div>
+</div>

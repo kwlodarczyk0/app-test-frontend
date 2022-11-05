@@ -1,9 +1,24 @@
 <div class="action__bar">
   <mat-icon routerLink="/dashboard">fast_rewind</mat-icon>
   <div>
-    <button mat-button [routerLink]="'addTask'">Add task</button>
-    <button *productManager="name" mat-button (click)="openDialog()">
+    <button mat-raised-button color="primary" [routerLink]="'addTask'">
+      Add task
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      *productManager="name"
+      (click)="openDialog()"
+    >
       Add user to project
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      *appHasRole="'ROLE_ADMIN'"
+      (click)="openManagerDialog()"
+    >
+      Set product manager
     </button>
   </div>
 </div>
@@ -25,8 +40,10 @@
     >
       <div class="example-box" *ngFor="let item of openTasks" cdkDrag>
         {{ item.code }}
-        {{ item.id }}
-        <button [routerLink]="[item.code]">KLIK</button>
+
+        <button [routerLink]="[item.code]" mat-raised-button color="primary">
+          Details
+        </button>
       </div>
     </div>
   </div>
@@ -42,8 +59,10 @@
     >
       <div class="example-box" *ngFor="let item of inProgressTasks" cdkDrag>
         {{ item.code }}
-        {{ item.id }}
-        <button [routerLink]="[item.code]">KLIK</button>
+
+        <button [routerLink]="[item.code]" mat-raised-button color="primary">
+          Details
+        </button>
       </div>
     </div>
   </div>
@@ -59,8 +78,10 @@
     >
       <div class="example-box" *ngFor="let item of doneTasks" cdkDrag>
         {{ item.code }}
-        {{ item.id }}
-        <button [routerLink]="[item.code]">KLIK</button>
+
+        <button [routerLink]="[item.code]" mat-raised-button color="primary">
+          Details
+        </button>
       </div>
     </div>
   </div>

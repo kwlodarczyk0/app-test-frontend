@@ -22,4 +22,12 @@ export class UserService {
   getUserRoles() {
     return this.http.get(`${this.API_URL}/user/roles`);
   }
+
+  addNewUser(name: string, username: string, password: string) {
+    return this.http.post(`${this.API_URL}/user/addUser`, {
+      name: name,
+      username: username,
+      password: password,
+    });
+  }
 }

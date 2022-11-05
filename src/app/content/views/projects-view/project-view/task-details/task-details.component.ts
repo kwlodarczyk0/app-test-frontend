@@ -5,7 +5,6 @@ import { map, Observable, startWith } from 'rxjs';
 import { ProjectsService } from 'src/app/api/projects/projects.service';
 import { TaskModel } from 'src/app/api/tasks/models/task.model';
 import { TasksService } from 'src/app/api/tasks/tasks.service';
-import { UserService } from 'src/app/api/user/user.service';
 
 @Component({
   selector: 'app-task-details',
@@ -16,7 +15,6 @@ export class TaskDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private taskService: TasksService,
-    private userService: UserService,
     private projectService: ProjectsService
   ) {}
 
@@ -28,6 +26,7 @@ export class TaskDetailsComponent implements OnInit {
   user = new FormControl<any>('');
   options: any = [];
   filteredOptions!: Observable<any>;
+  commentForm = new FormControl('');
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -37,6 +36,7 @@ export class TaskDetailsComponent implements OnInit {
 
     this.taskService.getTaskDetails(this.id).subscribe((data) => {
       this.task = data;
+      console.log(data);
     });
 
     this.projectService
@@ -62,6 +62,22 @@ export class TaskDetailsComponent implements OnInit {
       .subscribe((data) => {
         this.task = data;
       });
+  }
+
+  addComment() {
+    //console.log('addd');
+    //console.log(this.commentForm.value);
+    this.taskService
+      .addCommentToTask(this.id, this.commentForm.value)
+      .subscribe((data) => {
+        this.task = data;
+      });
+  }
+
+  deleteComment(id: any) {
+    this.taskService.deleteComment(this.id, id).subscribe((data) => {
+      this.task = data;
+    });
   }
 
   //////////////////////////////////////

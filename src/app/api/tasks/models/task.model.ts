@@ -1,4 +1,5 @@
 import { UserModel } from '../../user/models/user.model';
+import { CommentModel } from './comment.model';
 
 export interface TaskModel {
   id: number;
@@ -8,4 +9,5 @@ export interface TaskModel {
   priority: string;
   status: string;
   user?: UserModel;
+  comments: CommentModel[];
 }

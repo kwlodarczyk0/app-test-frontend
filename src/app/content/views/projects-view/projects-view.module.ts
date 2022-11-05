@@ -19,9 +19,11 @@ import { AddProjectDialogComponent } from './main-view/add-project-dialog/add-pr
 import { MatButtonModule } from '@angular/material/button';
 import { AddTaskComponent } from './project-view/add-task/add-task.component';
 import { TaskDetailsComponent } from './project-view/task-details/task-details.component';
-import { HasRoleDirective } from 'src/app/common/hasRole.directive';
-import { isProductManagerDirective } from 'src/app/common/isProductManager.directive';
-
+//import { HasRoleDirective } from 'src/app/common/hasRole.directive';
+//import { isProductManagerDirective } from 'src/app/common/isProductManager.directive';
+import { MatSelectModule } from '@angular/material/select';
+import { SetManagerDialogComponent } from './project-view/set-manager-dialog/set-manager-dialog.component';
+import { DirectiveModule } from 'src/app/common/directive/directive.module';
 const PROJECT_COMPONETS = [
   MainViewComponent,
   ProjectViewComponent,
@@ -30,8 +32,8 @@ const PROJECT_COMPONETS = [
   AddTaskDialogComponent,
   AddProjectDialogComponent,
   AddTaskComponent,
-  HasRoleDirective,
-  isProductManagerDirective,
+  //HasRoleDirective,
+  //isProductManagerDirective,
 ];
 
 const PROJECT_MODULES = [
@@ -47,10 +49,16 @@ const PROJECT_MODULES = [
   ReactiveFormsModule,
   MatInputModule,
   MatButtonModule,
+  MatSelectModule,
+  DirectiveModule,
 ];
 
 @NgModule({
-  declarations: [...PROJECT_COMPONETS, TaskDetailsComponent],
+  declarations: [
+    ...PROJECT_COMPONETS,
+    TaskDetailsComponent,
+    SetManagerDialogComponent,
+  ],
   imports: [...PROJECT_MODULES],
 })
 export class ProjectsViewModule {}

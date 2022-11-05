@@ -14,6 +14,7 @@ import { TasksService } from 'src/app/api/tasks/tasks.service';
 import { CdkAriaLive } from '@angular/cdk/a11y';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { AnimateTimings } from '@angular/animations';
+import { SetManagerDialogComponent } from './set-manager-dialog/set-manager-dialog.component';
 
 @Component({
   selector: 'app-project-view',
@@ -72,6 +73,14 @@ export class ProjectViewComponent implements OnInit {
   }
   openDialog() {
     this.dialog.open(AddTaskDialogComponent, {
+      data: {
+        projectName: this.name,
+      },
+    });
+  }
+
+  openManagerDialog() {
+    this.dialog.open(SetManagerDialogComponent, {
       data: {
         projectName: this.name,
       },

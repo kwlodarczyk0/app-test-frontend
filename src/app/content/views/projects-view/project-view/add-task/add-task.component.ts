@@ -16,6 +16,10 @@ export class AddTaskComponent implements OnInit {
   ) {}
 
   project!: string;
+  selected: any;
+  options: any = ['BLOCKER', 'CRITICAL', 'MAJOR', 'NORMAL', 'MINOR', 'DEFECT'];
+
+  control = new FormControl('');
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -29,6 +33,7 @@ export class AddTaskComponent implements OnInit {
   });
 
   get priority(): string {
+    this.form.controls['priority'].setValue(this.selected);
     return this.form.get('priority')?.value;
   }
 
@@ -37,6 +42,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   add() {
+    //console.log(this.priority);
     const payload = {
       priority: this.priority,
       description: this.description,

@@ -36,6 +36,21 @@ export class TasksService {
     });
   }
 
+  addCommentToTask(taskCode: string, text: string | null) {
+    return this.http.post<any>(`${this.API_URL}/task/addComment/${taskCode}`, {
+      text: text,
+    });
+  }
+
+  deleteComment(taskCode: string, taskId: number) {
+    return this.http.delete<any>(
+      `${this.API_URL}/task/removeComment/${taskCode}`,
+      {
+        body: { id: taskId },
+      }
+    );
+  }
+
   /////////////////////////////////////////////////////
   //function to upload files
   upload(formData: FormData): Observable<HttpEvent<string[]>> {

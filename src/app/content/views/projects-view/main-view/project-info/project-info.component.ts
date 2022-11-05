@@ -9,15 +9,6 @@ import { ProjectsService } from 'src/app/api/projects/projects.service';
   styleUrls: ['./project-info.component.scss'],
 })
 export class ProjectInfoComponent implements OnInit {
-  _activeProject!: ProjectModel;
-  /*get activeProject() {
-    return this._activeProject;
-  }*/
-
-  /*@Input() set activeProject(value: any) {
-    this._activeProject = value;
-  }*/
-
   @Input() activeProject!: ProjectModel;
 
   //@ViewChild('ctx') ctx: any;
@@ -79,6 +70,17 @@ export class ProjectInfoComponent implements OnInit {
         },
         options: {
           aspectRatio: 2.5,
+          // maintainAspectRatio: false,
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'left',
+              /*labels: {
+                color: 'rgb(255, 99, 132)',
+              },*/
+            },
+          },
         },
       });
     }

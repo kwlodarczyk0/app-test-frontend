@@ -1,0 +1,23 @@
+.add-task {
+    display: flex;
+    //flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+
+    &__description {
+        //width: 100%;
+        width: 500px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.test {
+    width: 1000px;
+}
+
+.mat-form-field-appearance-outline {
+    width: 1000px;
+}
