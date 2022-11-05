@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { tap, map, BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { UserModel } from './models/user.model';
 
 @Injectable({
@@ -28,6 +28,20 @@ export class UserService {
       name: name,
       username: username,
       password: password,
+    });
+  }
+
+  changePassword(
+    username: string,
+    newPassword: string,
+    repeatedNewPassword: string,
+    oldPassword: string
+  ) {
+    return this.http.put(`${this.API_URL}/user/changeUserPassword`, {
+      username: username,
+      newPassword: newPassword,
+      repeatedNewPassword: repeatedNewPassword,
+      oldPassword: oldPassword,
     });
   }
 }

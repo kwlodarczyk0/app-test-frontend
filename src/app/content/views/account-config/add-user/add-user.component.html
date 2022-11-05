@@ -3,32 +3,29 @@
     <mat-card-content>
       <h2>Add new user</h2>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div>
-          <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
-            <input formControlName="name" matInput />
-            <mat-error>Name is required</mat-error>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field appearance="outline">
-            <mat-label>Username</mat-label>
-            <input formControlName="username" matInput />
-            <mat-error>Username is required</mat-error>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input
-              formControlName="password"
-              matInput
-              autocomplete="on"
-              type="password"
-            />
-            <mat-error>Password is required</mat-error>
-          </mat-form-field>
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="name" matInput />
+          <mat-error>Name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input formControlName="username" matInput />
+          <mat-error>Username is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            formControlName="password"
+            matInput
+            autocomplete="on"
+            type="password"
+          />
+          <mat-error>Password is required</mat-error>
+        </mat-form-field>
+
         <button mat-raised-button color="primary">Register</button>
       </form>
     </mat-card-content>

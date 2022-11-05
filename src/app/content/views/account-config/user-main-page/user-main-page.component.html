@@ -5,9 +5,56 @@
 >
   Add new user
 </button>
-<button mat-raised-button routerLink="/dashboard/user-details/advanced">
-  Account settings
-</button>
 <div>
   <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="user">
+  <mat-card>
+    <h2>User information</h2>
+    <div class="user__info">User id: {{ user.id }}</div>
+    <div class="user__info">Name: {{ user.name }}</div>
+    <div class="user__info">Username: {{ user.username }}</div>
+  </mat-card>
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Change Password </mat-panel-title>
+        <!-- <mat-panel-description>
+          Currently I am {{ panelOpenState ? "open" : "closed" }}
+        </mat-panel-description> -->
+      </mat-expansion-panel-header>
+      <form [formGroup]="form" (ngSubmit)="changePassword()">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Current password</mat-label>
+            <input formControlName="oldPassword" matInput />
+            <mat-error>current password is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>New password</mat-label>
+            <input formControlName="newPassword" matInput type="password" />
+            <mat-error>Password is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Repeat new password</mat-label>
+            <input
+              formControlName="repeatedNewPassword"
+              matInput
+              type="password"
+            />
+            <mat-error>Password is required</mat-error>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary">Change password</button>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

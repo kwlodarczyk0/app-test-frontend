@@ -8,16 +8,14 @@ const routes: Routes = [
   {
     path: '',
     component: UserMainPageComponent,
-    children: [
-      {
-        path: 'advanced',
-        component: AndvancedConfigComponent,
-      },
-      {
-        path: 'add-user',
-        component: AddUserComponent,
-      },
-    ],
+  },
+  {
+    path: 'advanced',
+    component: AndvancedConfigComponent,
+  },
+  {
+    path: 'add-user',
+    component: AddUserComponent,
   },
 ];
 

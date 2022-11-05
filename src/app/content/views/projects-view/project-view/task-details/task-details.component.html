@@ -3,39 +3,48 @@
   <div *ngIf="task" class="task__details">
     <mat-card>
       <h2>{{ task.code }}</h2>
+
+      <p>Task added at: {{ task.creationDate | date }}</p>
+
+      <p>Taks prority: {{ task.priority }}</p>
+
+      <div>
+        Assiggned user:
+        <span>{{ task.user?.username }}</span>
+        <span *ngIf="!task.user?.username">Not user assigned</span>
+      </div>
+
       <h3>Task description:</h3>
       <p>{{ task.description }}</p>
-      <p>Task added at:</p>
-      {{ task.creationDate | date }}
-      <p>Taks prority:</p>
-      {{ task.priority }}
-      <p>Assiggned user:</p>
-      <div *ngIf="!task.user?.username">Not user assigned</div>
-      <div>{{ task.user?.username }}</div>
 
+      <hr />
       <h2>Comment section</h2>
 
       <div *ngFor="let comment of task.comments" class="comment">
-        <div>{{ comment.id }}</div>
-        <div>{{ comment.text }}</div>
-        <div>{{ comment.user.username }}</div>
-        <div>{{ comment.date | date }}</div>
-        <button
-          mat-raised-button
-          color="warn"
-          (click)="deleteComment(comment.id)"
-        >
-          X
+        <div class="comment__data">
+          <h3>{{ comment.user.username }} at {{ comment.date | date }}</h3>
+
+          <div>{{ comment.text }}</div>
+        </div>
+        <div>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="deleteComment(comment.id)"
+          >
+            X
+          </button>
+        </div>
+      </div>
+      <div class="comment__form">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Add comment</mat-label>
+          <input type="text" matInput [formControl]="commentForm" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addComment()">
+          Add comment
         </button>
       </div>
-
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Add comment</mat-label>
-        <input type="text" matInput [formControl]="commentForm" />
-      </mat-form-field>
-      <button mat-raised-button color="accent" (click)="addComment()">
-        Add comment
-      </button>
     </mat-card>
   </div>
   <div class="task__form">

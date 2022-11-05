@@ -65,13 +65,13 @@ export class TaskDetailsComponent implements OnInit {
   }
 
   addComment() {
-    //console.log('addd');
-    //console.log(this.commentForm.value);
     this.taskService
       .addCommentToTask(this.id, this.commentForm.value)
       .subscribe((data) => {
         this.task = data;
       });
+
+    this.commentForm.setValue('');
   }
 
   deleteComment(id: any) {

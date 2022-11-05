@@ -12,9 +12,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-//import { HasRoleDirective } from 'src/app/common/hasRole.directive';
-//import { isProductManagerDirective } from 'src/app/common/isProductManager.directive';
 import { DirectiveModule } from 'src/app/common/directive/directive.module';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const ACCOUNT_CONFIG_COMPONENTS = [
   UserMainPageComponent,
@@ -36,6 +35,7 @@ const ACCOUNT_CONFIG_MODULES = [
   MatButtonModule,
   MatSelectModule,
   DirectiveModule,
+  MatExpansionModule,
 ];
 
 @NgModule({
