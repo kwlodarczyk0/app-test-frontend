@@ -27,17 +27,17 @@ export class isProductManagerDirective implements OnInit, OnDestroy {
   user1: any;
 
   ngOnInit() {
-    console.log(this.productManager);
+    //console.log(this.productManager);
 
     this.projectService
       .getProjectByName(this.productManager)
       .subscribe((data1: any) => {
-        console.log(data1[0].productManager);
+        //console.log(data1[0].productManager);
 
         this.userService.getCurrentUser().subscribe((data: any) => {
-          console.log(data);
+          //console.log(data);
           if (data1[0].productManager === data.username) {
-            console.log('ok');
+            //console.log('ok');
             this.viewContainerRef.createEmbeddedView(this.templateRef);
           }
         });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserModel } from 'src/app/api/user/models/user.model';
 import { UserService } from 'src/app/api/user/user.service';
 
@@ -9,7 +10,10 @@ import { UserService } from 'src/app/api/user/user.service';
   styleUrls: ['./user-main-page.component.scss'],
 })
 export class UserMainPageComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   user!: UserModel;
   panelOpenState = false;
@@ -37,6 +41,10 @@ export class UserMainPageComponent implements OnInit {
     });
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
   changePassword() {
     console.log('xd');
     console.log(this.repeatedNewPassword);
@@ -54,7 +62,9 @@ export class UserMainPageComponent implements OnInit {
           this.form.reset();
         },
         error: (err) => {
-          console.log(err);
+          //console.log(err.error.errors[0]);
+          //console.log(err.errors);
+          this.openSnackBar(err.error.errors[0], 'X');
           this.form.reset();
         },
       });

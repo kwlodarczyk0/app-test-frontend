@@ -50,12 +50,13 @@ export class AddUserComponent implements OnInit {
         .addNewUser(this.name, this.username, this.passowrd)
         .subscribe({
           next: () => {
-            console.log('ok');
+            //console.log('ok');
+            this.openSnackBar('User was sucesfully added', 'X');
             this.router.navigate(['/dashboard/user-details']);
           },
           error: () => {
-            console.log('error');
-            this.openSnackBar('Error, user is not added', 'X');
+            //console.log('error');
+            this.openSnackBar('Error, this username is already used', 'X');
           },
         });
     }
